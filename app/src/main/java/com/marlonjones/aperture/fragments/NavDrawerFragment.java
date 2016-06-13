@@ -67,13 +67,13 @@ public class NavDrawerFragment extends Fragment implements NavDrawerAdapter.Call
         mSelectedColor = Utils.resolveColor(getActivity(), com.marlonjones.aperture.R.attr.colorAccent);
         mRegularColor = Utils.resolveColor(getActivity(), android.R.attr.textColorPrimary);
     }
-
-    public void notifyClosed() {
-        View v = getView();
-        if (v == null) return;
-        View dropdown = v.findViewById(com.marlonjones.aperture.R.id.dropdown);
-        if (dropdown.getTag() != null) dropdown.performClick();
-    }
+//Commented Out for this release
+    //public void notifyClosed() {
+   //     View v = getView();
+   //     if (v == null) return;
+   //     View dropdown = v.findViewById(com.marlonjones.aperture.R.id.dropdown);
+    //    if (dropdown.getTag() != null) dropdown.performClick();
+   // }
 
     public void notifyBackStack(String albumPath) {
         mAdapter.setItemChecked(albumPath);
@@ -154,34 +154,34 @@ public class NavDrawerFragment extends Fragment implements NavDrawerAdapter.Call
                 showAccountAddDialog();
             }
         });
-        ImageButton dropdown = (ImageButton) view.findViewById(com.marlonjones.aperture.R.id.dropdown);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            dropdown.setBackgroundResource(Utils.resolveDrawable(getActivity(), com.marlonjones.aperture.R.attr.menu_selector));
-        dropdown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getTag() == null) {
-                    ((ImageButton) v).setImageResource(com.marlonjones.aperture.R.drawable.ic_uparrow);
-                    v.setTag("GOUP");
-                    View root = getView();
-                    if (root != null) {
-                        ((TextView) root.findViewById(com.marlonjones.aperture.R.id.accountHeader)).setText(com.marlonjones.aperture.R.string.accounts);
-                        root.findViewById(com.marlonjones.aperture.R.id.accountsFrame).setVisibility(View.VISIBLE);
-                        root.findViewById(com.marlonjones.aperture.R.id.list).setVisibility(View.GONE);
+       // ImageButton dropdown = (ImageButton) view.findViewById(com.marlonjones.aperture.R.id.dropdown);
+       // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        //    dropdown.setBackgroundResource(Utils.resolveDrawable(getActivity(), com.marlonjones.aperture.R.attr.menu_selector));
+       // dropdown.setOnClickListener(new View.OnClickListener() {
+           // @Override
+           // public void onClick(View v) {
+            //    if (v.getTag() == null) {
+             ////       ((ImageButton) v).setImageResource(com.marlonjones.aperture.R.drawable.ic_uparrow);
+                 //   v.setTag("GOUP");
+                //    View root = getView();
+                  //  if (root != null) {
+                 //       ((TextView) root.findViewById(com.marlonjones.aperture.R.id.accountHeader)).setText(com.marlonjones.aperture.R.string.accounts);
+                   //     root.findViewById(com.marlonjones.aperture.R.id.accountsFrame).setVisibility(View.VISIBLE);
+                   //     root.findViewById(com.marlonjones.aperture.R.id.list).setVisibility(View.GONE);
                     }
-                } else {
-                    ((ImageButton) v).setImageResource(com.marlonjones.aperture.R.drawable.ic_downarrow);
-                    v.setTag(null);
-                    View root = getView();
-                    if (root != null) {
-                        ((TextView) root.findViewById(com.marlonjones.aperture.R.id.accountHeader)).setText(com.marlonjones.aperture.R.string.local);
-                        root.findViewById(com.marlonjones.aperture.R.id.accountsFrame).setVisibility(View.GONE);
-                        root.findViewById(com.marlonjones.aperture.R.id.list).setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-        });
-    }
+                //} else {
+                //    ((ImageButton) v).setImageResource(com.marlonjones.aperture.R.drawable.ic_downarrow);
+                //    v.setTag(null);
+                    //View root = getView();
+                   // if (root != null) {
+                  //      ((TextView) root.findViewById(com.marlonjones.aperture.R.id.accountHeader)).setText(com.marlonjones.aperture.R.string.local);
+                      //  root.findViewById(com.marlonjones.aperture.R.id.accountsFrame).setVisibility(View.GONE);
+                     //   root.findViewById(com.marlonjones.aperture.R.id.list).setVisibility(View.VISIBLE);
+                   // }
+              //  }
+           // }
+       // });
+  //   }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

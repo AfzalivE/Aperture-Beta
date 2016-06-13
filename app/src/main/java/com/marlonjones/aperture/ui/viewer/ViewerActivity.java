@@ -26,7 +26,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.print.PrintHelper;
 import android.support.v4.view.ViewPager;
-import android.support.v7.internal.widget.TintImageView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
@@ -37,8 +36,10 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.marlonjones.aperture.R;
 import com.marlonjones.aperture.adapters.MediaAdapter;
 import com.marlonjones.aperture.adapters.ViewerPageAdapter;
 import com.marlonjones.aperture.api.PhotoEntry;
@@ -65,18 +66,18 @@ import static com.marlonjones.aperture.ui.MainActivity.EXTRA_CURRENT_ITEM_POSITI
 import static com.marlonjones.aperture.ui.MainActivity.EXTRA_OLD_ITEM_POSITION;
 
 /**
- * @author Aidan Follestad (afollestad)
+ * @author Aidan Follestad (afollestad) and edited by Marlon Jones for Aperture
  */
 public class ViewerActivity extends ThemedActivity implements SlideshowInitDialog.SlideshowCallback {
 
     @Override
     protected int darkTheme() {
-        return com.marlonjones.aperture.R.style.AppTheme_Viewer_Dark;
+        return R.style.AppTheme_Viewer_Dark;
     }
 
     @Override
     protected int lightTheme() {
-        return com.marlonjones.aperture.R.style.AppTheme_Viewer;
+        return R.style.AppTheme_Viewer;
     }
 
     private List<MediaEntry> mEntries;
@@ -101,7 +102,7 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
     private boolean mIsReturning;
     private boolean mAllVideos;
 
-    private TintImageView mOverflow;
+    private ImageView mOverflow;
 
     private class FileBeamCallback implements NfcAdapter.CreateBeamUrisCallback {
 
@@ -121,8 +122,8 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
     public void invalidateLightMode(boolean lightMode) {
         if (lightMode == mLightMode) return;
         mLightMode = lightMode;
-        final Drawable navIcon = ContextCompat.getDrawable(this, com.marlonjones.aperture.R.drawable.ic_nav_back);
-        final int darkGray = ContextCompat.getColor(this, com.marlonjones.aperture.R.color.viewer_lightmode_icons);
+        final Drawable navIcon = ContextCompat.getDrawable(this, R.drawable.ic_nav_back);
+        final int darkGray = ContextCompat.getColor(this, R.color.viewer_lightmode_icons);
         navIcon.setColorFilter(mLightMode ? darkGray : Color.WHITE, PorterDuff.Mode.SRC_ATOP);
         mToolbar.setNavigationIcon(navIcon);
         invalidateOptionsMenu();
@@ -210,7 +211,7 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 
                 if (!mIsReturning) {
                     int primaryColorDark = primaryColorDark();
-                    int viewerOverlayColor = ContextCompat.getColor(ViewerActivity.this, com.marlonjones.aperture.R.color.viewer_overlay);
+                    int viewerOverlayColor = ContextCompat.getColor(ViewerActivity.this, R.color.viewer_overlay);
 
                     ObjectAnimator.ofObject(mToolbar, "backgroundColor", new ArgbEvaluator(), primaryColor(), viewerOverlayColor)
                             .setDuration(duration)
@@ -330,14 +331,14 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
         }
         super.onCreate(savedInstanceState);
 
-        setContentView(com.marlonjones.aperture.R.layout.activity_viewer);
+        setContentView(R.layout.activity_viewer);
 
-        mToolbar = (Toolbar) findViewById(com.marlonjones.aperture.R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, getStatusBarHeight(), 0, 0);
         mToolbar.setLayoutParams(params);
-        mToolbar.setNavigationIcon(com.marlonjones.aperture.R.drawable.ic_nav_back);
+        mToolbar.setNavigationIcon(R.drawable.ic_nav_back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -371,7 +372,7 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
                             path = null;
                         } else {
                             final File file = new File(path);
-                            final List<MediaEntry> brothers = Utils.getEntriesFromFolder(this, file.getParentFile(), true, false, MediaAdapter.FileFilterMode.ALL);
+                            final List<MediaEntry> brothers = Utils.getEntriesFromFolder(this, file.getParentFile(), false, false, MediaAdapter.FileFilterMode.ALL);
                             mEntries.addAll(brothers);
                             for (int i = 0; i < brothers.size(); i++) {
                                 if (brothers.get(i).data().equals(file.getAbsolutePath())) {
@@ -412,8 +413,8 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 
                 if (path == null) {
                     new MaterialDialog.Builder(this)
-                            .title(com.marlonjones.aperture.R.string.error)
-                            .content(com.marlonjones.aperture.R.string.invalid_file_path_error)
+                            .title(R.string.error)
+                            .content(R.string.invalid_file_path_error)
                             .positiveText(android.R.string.ok)
                             .cancelable(false)
                             .callback(new MaterialDialog.ButtonCallback() {
@@ -429,7 +430,7 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 
             mAdapter = new ViewerPageAdapter(getFragmentManager(), mEntries,
                     getIntent().getStringExtra("bitmapInfo"), mCurrentPosition);
-            mPager = (ViewPager) findViewById(com.marlonjones.aperture.R.id.pager);
+            mPager = (ViewPager) findViewById(R.id.pager);
             mPager.setOffscreenPageLimit(1);
             mPager.setAdapter(mAdapter);
 
@@ -611,22 +612,22 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(com.marlonjones.aperture.R.menu.viewer, menu);
+        getMenuInflater().inflate(R.menu.viewer, menu);
         if (mEntries.size() > 0) {
             MediaEntry currentEntry = mEntries.get(mCurrentPosition);
             if (currentEntry == null || currentEntry.isVideo()) {
-                menu.findItem(com.marlonjones.aperture.R.id.print).setVisible(false);
-               // menu.findItem(com.marlonjones.aperture.R.id.edit).setVisible(false); //Commented out until complete
-                menu.findItem(com.marlonjones.aperture.R.id.set_as).setVisible(false);
+                menu.findItem(R.id.print).setVisible(false);
+                menu.findItem(R.id.edit).setVisible(false);
+                menu.findItem(R.id.set_as).setVisible(false);
             } else {
-                menu.findItem(com.marlonjones.aperture.R.id.print).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
-               // menu.findItem(com.marlonjones.aperture.R.id.edit).setVisible(true); //Commented out until complete
-                menu.findItem(com.marlonjones.aperture.R.id.set_as).setVisible(true);
+                menu.findItem(R.id.print).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
+                menu.findItem(R.id.edit).setVisible(true);
+                menu.findItem(R.id.set_as).setVisible(true);
             }
         }
-        menu.findItem(com.marlonjones.aperture.R.id.slideshow).setVisible(!mAllVideos && mSlideshowTimer == null);
+        menu.findItem(R.id.slideshow).setVisible(!mAllVideos && mSlideshowTimer == null);
 
-        final int darkGray = ContextCompat.getColor(this, com.marlonjones.aperture.R.color.viewer_lightmode_icons);
+        final int darkGray = ContextCompat.getColor(this, R.color.viewer_lightmode_icons);
         for (int i = 0; i < menu.size(); i++) {
             MenuItem item = menu.getItem(i);
             if (item.getIcon() != null)
@@ -648,12 +649,12 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
             @Override
             public void onGlobalLayout() {
                 final ArrayList<View> outViews = new ArrayList<>();
-                final String overflowDescription = getString(com.marlonjones.aperture.R.string.abc_action_menu_overflow_description);
+                final String overflowDescription = getString(R.string.abc_action_menu_overflow_description);
                 mToolbar.findViewsWithText(outViews, overflowDescription, View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
                 if (outViews.isEmpty()) {
                     return;
                 }
-                mOverflow = (TintImageView) outViews.get(0);
+                mOverflow = (ImageView) outViews.get(0);
                 mOverflow.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
                 removeOnGlobalLayoutListener(mToolbar, this);
             }
@@ -688,17 +689,17 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == com.marlonjones.aperture.R.id.share) {
+        if (item.getItemId() == R.id.share) {
             try {
                 final String mime = mEntries.get(mCurrentPosition).isVideo() ? "video/*" : "image/*";
                 startActivity(new Intent(Intent.ACTION_SEND)
                         .setType(mime)
                         .putExtra(Intent.EXTRA_STREAM, getCurrentUri()));
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getApplicationContext(), com.marlonjones.aperture.R.string.no_app_complete_action, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.no_app_complete_action, Toast.LENGTH_SHORT).show();
             }
             return true;
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.edit) {
+        } else if (item.getItemId() == R.id.edit) {
             try {
                 startActivityForResult(new Intent(Intent.ACTION_EDIT)
                         .setDataAndType(getCurrentUri(), "image/*"), EDIT_REQUEST);
@@ -707,16 +708,16 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
                 e.printStackTrace();
             }
             return true;
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.set_as) {
+        } else if (item.getItemId() == R.id.set_as) {
             try {
                 startActivity(new Intent(Intent.ACTION_ATTACH_DATA)
                         .setDataAndType(getCurrentUri(), "image/*")
                         .putExtra("mimeType", "image/*"));
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getApplicationContext(), com.marlonjones.aperture.R.string.no_app_complete_action, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.no_app_complete_action, Toast.LENGTH_SHORT).show();
             }
             return true;
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.print) {
+        } else if (item.getItemId() == R.id.print) {
 //            new Thread(new Runnable() {
 //                @Override
 //                public void run() {
@@ -728,28 +729,28 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
 //                    bitmap.recycle();
 //                }
 //            }).start();
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.details) {
+        } else if (item.getItemId() == R.id.details) {
             final MediaEntry entry = mEntries.get(mCurrentPosition);
             final File file = new File(entry.data());
             final Calendar cal = new GregorianCalendar();
             cal.setTimeInMillis(entry.dateTaken());
             new MaterialDialog.Builder(this)
-                    .title(com.marlonjones.aperture.R.string.details)
-                    .content(Html.fromHtml(getString(com.marlonjones.aperture.R.string.details_contents,
+                    .title(R.string.details)
+                    .content(Html.fromHtml(getString(R.string.details_contents,
                             TimeUtils.toStringLong(cal),
                             entry.width() + " x " + entry.height(),
                             file.getName(),
                             Utils.readableFileSize(file.length()),
                             file.getAbsolutePath())))
                     .contentLineSpacing(1.6f)
-                    .positiveText(com.marlonjones.aperture.R.string.dismiss)
+                    .positiveText(R.string.dismiss)
                     .show();
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.delete) {
+        } else if (item.getItemId() == R.id.delete) {
             final MediaEntry currentEntry = mEntries.get(mCurrentPosition);
             new MaterialDialog.Builder(this)
-                    .content(currentEntry.isVideo() ? com.marlonjones.aperture.R.string.delete_confirm_video : com.marlonjones.aperture.R.string.delete_confirm_photo)
-                    .positiveText(com.marlonjones.aperture.R.string.yes)
-                    .negativeText(com.marlonjones.aperture.R.string.no)
+                    .content(currentEntry.isVideo() ? R.string.delete_confirm_video : R.string.delete_confirm_photo)
+                    .positiveText(R.string.yes)
+                    .negativeText(R.string.no)
                     .callback(new MaterialDialog.ButtonCallback() {
                         @Override
                         public void onPositive(MaterialDialog materialDialog) {
@@ -762,7 +763,7 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
                         public void onNegative(MaterialDialog materialDialog) {
                         }
                     }).build().show();
-        } else if (item.getItemId() == com.marlonjones.aperture.R.id.slideshow) {
+        } else if (item.getItemId() == R.id.slideshow) {
             new SlideshowInitDialog().show(this);
         }
         return super.onOptionsItemSelected(item);
@@ -877,8 +878,8 @@ public class ViewerActivity extends ThemedActivity implements SlideshowInitDialo
                         }
                     } catch (SecurityException e) {
                         new MaterialDialog.Builder(this)
-                                .title(com.marlonjones.aperture.R.string.error)
-                                .content(com.marlonjones.aperture.R.string.open_permission_error)
+                                .title(R.string.error)
+                                .content(R.string.open_permission_error)
                                 .positiveText(android.R.string.ok)
                                 .cancelable(false)
                                 .callback(new MaterialDialog.ButtonCallback() {

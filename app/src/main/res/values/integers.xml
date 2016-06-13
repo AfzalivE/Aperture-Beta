@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name="default_grid_width">2</integer>
+    <integer name="default_grid_width">3</integer>
 
     <integer name="font_textStyle_medium">1</integer>
 

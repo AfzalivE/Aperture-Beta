@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+<!--<item
+    android:id="@+id/Camera"
+    android:icon="@drawable/ic_photo"
+    android:title="Take Photo"
+    android:onClick="camera"
+    app:showAsAction="ifRoom"/> -->
 
     <item
         android:id="@+id/choose"
@@ -32,8 +38,8 @@
     <item
         android:id="@+id/viewMode"
         android:icon="@drawable/ic_action_view_grid"
-        android:title="@string/view_mode"
-        app:showAsAction="ifRoom" />
+        android:title="@string/change_view"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/sort"

@@ -21,14 +21,7 @@
         android:id="@+id/exclude"
         android:title="@string/exclude"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/copyTo"
-        android:title="@string/copy_to"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/moveTo"
-        android:title="@string/move_to"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/edit"
         android:title="@string/edit"
@@ -37,5 +30,6 @@
         android:id="@+id/details"
         android:title="@string/details"
         app:showAsAction="never" />
+
 
 </menu>

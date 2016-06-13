@@ -7,12 +7,14 @@
         android:icon="@drawable/ic_action_share"
         android:title="@string/share"
         app:showAsAction="ifRoom" />
-   <!-- <item
+
+   <item
         android:id="@+id/edit"
         android:icon="@drawable/ic_action_edit"
         android:title="@string/edit"
-        app:showAsAction="ifRoom" />--> <!--
-        Commented out until complete-->
+        app:showAsAction="ifRoom" />
+
+
     <item
         android:id="@+id/set_as"
         android:title="@string/set_as" />

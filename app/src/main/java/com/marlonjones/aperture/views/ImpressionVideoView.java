@@ -20,7 +20,7 @@ import com.marlonjones.aperture.utils.Utils;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Aidan Follestad (afollestad)
+ * @author Aidan Follestad (afollestad) Edited by Marlon Jones (@VirusThePanda) for Aperture
  */
 public class ImpressionVideoView extends VideoView {
 

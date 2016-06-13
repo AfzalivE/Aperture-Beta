@@ -89,20 +89,9 @@
     </LinearLayout>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-       <!-- <com.melnykov.fab.FloatingActionButton
-            xmlns:fab="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/camFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:onClick="camFab"
-            android:src="@drawable/ic_image_camera"/>-->
     </FrameLayout>
     <FrameLayout
         android:id="@+id/nav_drawer_frame"

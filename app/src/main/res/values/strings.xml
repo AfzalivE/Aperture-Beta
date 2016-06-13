@@ -4,11 +4,11 @@
     <!--New Strings-->
     <string name="updatetitle">Update Info (What\'s new)</string>
     <string name="updatesumm">Information about this version of Aperture</string>
-    <string name="updatedialog"><![CDATA[<b>Updated to 0.5 - B: First Public Release</b>
+    <string name="updatedialog"><![CDATA[<b>Updated to 0.5.5 - B: Bug Fixes</b>
     <br/><br/>
-    Next Update: 0.7 - B: Google Cast Support, and Watch Face for Android Wear.
-    <br/><br/>
-    Next Major Update: 1.0 - R: Camera Support, Google Drive and Dropbox Support, and editing features.
+    ALPHA: Editor UI (Only for ALPHA test channel)
+    <br></br>
+   <b> Please note that this app is still under development, and is a BETA. There are bound to be some bugs or mishaps.</b>
     ]]></string>
     <string name="desc">People that helped make this possible</string>
     <string name="credits">Credits</string>
@@ -17,7 +17,8 @@
     <string name="cred_desc"><![CDATA[ Based off of <b> <a href=\'https://github.com/afollestad/impression\'>Impression</a></b> by <b><a href=\'https://google.com/+AidanFollestad\'>Aidan Follestad</a></b>.<br/><br/>
     Testing and Feedback - Galaxy Series: <b>TL</b> <br/><br/>
     Testing and Feedback - Moto X Series: <b>Virgil Shepard</b><br/><br/>
-    Icon Design and Store Graphic: <b><a href=\'https://plus.google.com/+ChristophLaier/auto\'>Christoph Laier</a><b/>
+    Icon Design and Store Graphic - <b><a href=\'https://plus.google.com/+ChristophLaier/auto\'>Christoph Laier</a><b/> <br/><br/>
+    Turkish Translation - <b> <a href=\'https://plus.google.com/+KutsanKaplan-enex/posts\'>Kutsan Kaplan</a> <b/>
     ]]></string>
     <!--END-->
     <string name="app_name">Aperture</string>
@@ -47,7 +48,7 @@
       <b> <a href=\'https://play.google.com/store/apps/dev?id=8037142226626699695\'>Google Play</a>&nbsp;&nbsp;
         <a href=\'https://plus.google.com/+MarlonJones\'>Google+</a>&nbsp;&nbsp;
         <a href=\'https://github.com/VirusThePanda\'>GitHub</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/VirusThePanda/Aperture-Gallery\'>Source Code</a></b><br/><br/></b>
+        <a href=\'https://github.com/VirusThePanda/Aperture-Beta\'>Source Code</a></b><br/><br/></b>
 To report any bugs, please email <b>marlonjones234@gmail.com</b>, or <b> <a href=\'https://plus.google.com/u/0/communities/116518857170051710391\'>Join the community</a> :)
     ]]></string>
     <string name="dismiss">Dismiss</string>
@@ -206,7 +207,11 @@ To report any bugs, please email <b>marlonjones234@gmail.com</b>, or <b> <a href
     <string name="empty">empty</string>
     <string name="share_using">Share using…</string>
     <string name="permission_needed">Permission Needed</string>
-    <string name="permission_needed_desc">Permission to access your phone\'s storage is needed in order to view and save images! Aperture will now close.</string>
+    <string name="permission_needed_desc">Permission to access your phone\'s storage is needed in order to view photos! Permission for your camera is needed to take pictures! Aperture will now close. </string>
     <string name="back">Back</string>
+    <string name="change_view">Change View</string>
+    <string name="personalization">Personalization</string>
+    <string name="folders">Folders</string>
+    <string name="views">Views</string>
 
 </resources>

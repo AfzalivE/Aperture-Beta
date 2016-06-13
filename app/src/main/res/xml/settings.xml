@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!--Info-->
     <com.marlonjones.aperture.views.ImpressionPreferenceCategory
         android:key="info_category"
         android:title="@string/info">
@@ -13,38 +13,13 @@
             android:key="Credits"
             android:summary="@string/desc"
             android:title="@string/credits" />
-        <com.marlonjones.aperture.views.ImpressionPreference
-            android:key="up"
-            android:summary="@string/updatesumm"
-            android:title="Update Info" />
-    </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
-
-    <com.marlonjones.aperture.views.ImpressionPreferenceCategory
-        android:key="behavior_category"
-        android:title="@string/behavior">
-
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="toolbar_album_stats"
-            android:layout="@layout/preference_custom"
-            android:persistent="true"
-            android:summary="@string/toolbar_stats_desc"
-            android:title="@string/toolbar_stats"
-            android:widgetLayout="@layout/preference_dynamiccheckbox" />
-
-        <CheckBoxPreference
-            android:key="overview_mode"
-            android:layout="@layout/preference_custom"
-            android:persistent="false"
-            android:summary="@string/overview_mode_desc"
-            android:title="@string/overview_display"
-            android:widgetLayout="@layout/preference_dynamiccheckbox" />
 
     </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
 
+<!--Personalization-->
     <com.marlonjones.aperture.views.ImpressionPreferenceCategory
         android:key="theme_category"
-        android:title="@string/theme">
+        android:title="@string/personalization">
 
         <CheckBoxPreference
             android:key="dark_theme"
@@ -64,7 +39,7 @@
             android:summary="@string/accent_color_desc"
             android:title="@string/accent_color" />
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="colored_navbar"
             android:layout="@layout/preference_custom"
             android:persistent="true"
@@ -73,10 +48,30 @@
             android:widgetLayout="@layout/preference_dynamiccheckbox" />
 
     </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
+    <!--Views (Folders, etc.)-->
+    <com.marlonjones.aperture.views.ImpressionPreferenceCategory
+        android:key="behavior_category"
+        android:title="@string/views">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="toolbar_album_stats"
+            android:layout="@layout/preference_custom"
+            android:persistent="true"
+            android:summary="@string/toolbar_stats_desc"
+            android:title="@string/toolbar_stats"
+            android:widgetLayout="@layout/preference_dynamiccheckbox" />
 
+    </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
+    <CheckBoxPreference
+        android:key="overview_mode"
+        android:layout="@layout/preference_custom"
+        android:persistent="false"
+        android:summary="@string/overview_mode_desc"
+        android:title="@string/overview_display"
+        android:widgetLayout="@layout/preference_dynamiccheckbox" />
     <com.marlonjones.aperture.views.ImpressionPreferenceCategory
         android:key="included_folder_category"
-        android:title="@string/included_folders">
+        android:title="@string/folders">
 
         <CheckBoxPreference
             android:defaultValue="true"
@@ -86,13 +81,6 @@
             android:summary="@string/include_subfolders_included_desc"
             android:title="@string/include_subfolders"
             android:widgetLayout="@layout/preference_dynamiccheckbox" />
-
-    </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
-
-    <com.marlonjones.aperture.views.ImpressionPreferenceCategory
-        android:key="excluded_album_category"
-        android:title="@string/excluded_folders">
-
         <com.marlonjones.aperture.views.ImpressionPreference
             android:key="excluded_folders"
             android:summary="@string/excluded_folders_desc"
@@ -108,5 +96,6 @@
             android:widgetLayout="@layout/preference_dynamiccheckbox" />
 
     </com.marlonjones.aperture.views.ImpressionPreferenceCategory>
+
 
 </PreferenceScreen>

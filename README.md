@@ -1,20 +1,16 @@
-##Aperture
-A material design gallery. A direct gateway to your photos. 
-===========================================================
-Based off of Impression by Aidan Follestad (@afollestad), Aperture was developed for the purpose of making a beautiful, yet non-
-distracting Photo Gallery. Right now, it is still in BETA, but more features are coming soon, including Google Drive and Dropbox
-intergration, and a photo editor. 
+##Aperture Gallery
+[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/VirusThePanda/Aperture-Gallery/blob/master/LICENSE.txt)
+[![travis-ci](https://travis-ci.org/MJonesDev/Aperture-Gallery.svg?branch=master)](https://travis-ci.org/VirusThePanda/Aperture-Gallery)
+
+Forked (with permission) off of *an older build* of Impression by Aidan Follestad, Daniel Ciao, and Marlon Jones, Aperture was developed for the purpose of making a beautiful, yet non-distracting Photo Gallery.
+
+<a href="https://play.google.com/store/apps/details?id=com.marlonjones.aperture">Download</a>
+
+~~<a href="https://play.google.com/apps/testing/com.marlonjones.aperture">ALPHA Test</a>~~
+
+<a href="https://plus.google.com/u/0/communities/116518857170051710391">Community (Google+)</a>
 
 ===========================================================
-Download: https://play.google.com/store/apps/details?id=com.marlonjones.aperture
-
-ALPHA Test (Test features before going to BETA): https://play.google.com/apps/testing/com.marlonjones.aperture
-
-Community: https://plus.google.com/u/0/communities/116518857170051710391
-
-
-===========================================================
-Contribution to this project is greatly welcomed. Also, please check out the original source code, Impression.
-
-#Licensed under the MIT License
-
+Important: Because of a corrupted keystore, I am unable to update the Google Play version of Aperture. To compensate for this, I 
+am currently developing two new versions of Aperture, named Aperture Mini and Aperture 2 (Titles are a WIP) so as of now, *this project is officially DISCONTINUED. Not by choice, 
+but due to the circumstances that have happened.* Of course, the Source Code is still free to use, but please respect the GPLv3. 

@@ -23,9 +23,8 @@ import com.marlonjones.aperture.R;
 import com.marlonjones.aperture.ui.base.ThemedActivity;
 import com.marlonjones.aperture.utils.Utils;
 import com.marlonjones.aperture.views.ImpressionPreference;
-import com.afollestad.materialdialogs.ColorChooserDialog;
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.melnykov.fab.FloatingActionButton;
 
 /**
  * @author Aidan Follestad (afollestad)
@@ -61,7 +60,6 @@ public class SettingsActivity extends ThemedActivity implements ColorChooserDial
     }
 
     public static class SettingsFragment extends PreferenceFragment {
-
         private void invalidateOverviewMode() {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
             TwoStatePreference overviewMode = (TwoStatePreference) findPreference("overview_mode");
@@ -111,35 +109,6 @@ public class SettingsActivity extends ThemedActivity implements ColorChooserDial
                     return true;
                 }
             });
-            findPreference("up").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    try {
-                        Activity a = getActivity();
-                        PackageInfo pInfo = a.getPackageManager().getPackageInfo(a.getPackageName(), 0);
-                        new MaterialDialog.Builder(a)
-                                .title(getString(R.string.updatetitle))
-                                .positiveText(com.marlonjones.aperture.R.string.dismiss)
-                                .content(Html.fromHtml(getString(R.string.updatedialog)))
-                                .build()
-                                .show();
-                    } catch (PackageManager.NameNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    return true;
-                }
-            });
-
-            invalidateOverviewMode();
-            findPreference("overview_mode").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
-                            .putInt("overview_mode", ((Boolean) newValue) ? 0 : 1).commit();
-                    invalidateOverviewMode();
-                    return true;
-                }
-            });
 
             findPreference("excluded_folders").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -163,6 +132,17 @@ public class SettingsActivity extends ThemedActivity implements ColorChooserDial
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     if (getActivity() != null)
                         getActivity().recreate();
+                    return true;
+                }
+            });
+
+            invalidateOverviewMode();
+            findPreference("overview_mode").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
+                            .putInt("overview_mode", ((Boolean) newValue) ? 0 : 1).commit();
+                    invalidateOverviewMode();
                     return true;
                 }
             });

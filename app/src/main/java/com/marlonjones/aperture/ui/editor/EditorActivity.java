@@ -2,6 +2,7 @@ package com.marlonjones.aperture.ui.editor;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.effect.Effect;
 import android.media.effect.EffectContext;
 import android.media.effect.EffectFactory;
@@ -556,4 +557,5 @@ public class EditorActivity extends AppCompatActivity implements GLSurfaceView.R
             mTexRenderer.renderTexture(mTextures[0]);
         }
     }
+
 }

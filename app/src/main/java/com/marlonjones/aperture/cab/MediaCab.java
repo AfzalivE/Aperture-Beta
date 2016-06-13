@@ -479,16 +479,6 @@ public class MediaCab implements Serializable, MaterialCab.Callback {
                     e.printStackTrace();
                 }
                 return true;
-            case com.marlonjones.aperture.R.id.copyTo:
-                mContext.startActivityForResult(new Intent(mContext, MainActivity.class)
-                        .setAction(MainActivity.ACTION_SELECT_ALBUM)
-                        .putExtra("mode", com.marlonjones.aperture.R.id.copyTo), COPY_REQUEST_CODE);
-                return true;
-            case com.marlonjones.aperture.R.id.moveTo:
-                mContext.startActivityForResult(new Intent(mContext, MainActivity.class)
-                        .setAction(MainActivity.ACTION_SELECT_ALBUM)
-                        .putExtra("mode", com.marlonjones.aperture.R.id.moveTo), MOVE_REQUEST_CODE);
-                return true;
             case com.marlonjones.aperture.R.id.details:
                 final MediaEntry entry = mMediaEntries.get(0);
                 final File file = new File(entry.data());

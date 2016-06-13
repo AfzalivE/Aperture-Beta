@@ -5,6 +5,9 @@
     <color name="material_indigo_100">#C5CAE9</color>
     <color name="material_indigo_500">#3F51B5</color>
     <color name="material_pink_500">#E91E63</color>
+<color name = "default_main">#ff5252</color>
+    <color name ="default_accent">#ff8a80</color>
+
 
     <!--<color name="viewer_overlay">#99000000</color>-->
     <color name="viewer_overlay">#00000000</color>

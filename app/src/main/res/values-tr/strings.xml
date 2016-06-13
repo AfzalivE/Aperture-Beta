@@ -1,0 +1,211 @@
+<resources>
+
+    <!--New Strings-->
+    <string name="updatetitle">"Güncelleme Bilgisi (Yenilikler)"</string>
+    <string name="updatesumm">"Aperture'ın bu sürümü hakkında bilgi"</string>
+    <string name="updatedialog">"&lt;![CDATA[&lt;b&gt;0.5.5 Güncellemesi - B: Hata Düzeltmeleri&lt;/b&gt;
+    &lt;br/&gt;&lt;br/&gt;
+    ALFA: Editör arayüzü (Sadece ALFA test kanalı için kullanılabilir)
+    &lt;br&gt;&lt;/br&gt;
+   &lt;b&gt; Bu uygulamanın hala geliştirilme aşamasında ve bir BETA'da olduğunu unutmayın. Bazı hatalar ve aksilikler olabilir.&lt;/b&gt;
+    "</string>
+    <string name="desc">"Projemizi mümkün kılmak için yardım edenler"</string>
+    <string name="credits">"Emeği Geçenler"</string>
+    <string name="fabcolour">"FAB Rengi"</string>
+    <string name="fabdesc">"Yüzen Aksiyon Butonu (FAB) için bir renk uygulayın"</string>
+    <string name="cred_desc">"&lt;![CDATA[ Bu uygulama &lt;b&gt;&lt;a href='https://google.com/+AidanFollestad'&gt;Aidan Follestad&lt;/a&gt;&lt;/b&gt; tarafından yapılan &lt;b&gt;&lt;a href='https://github.com/afollestad/impression'&gt;Impression&lt;/a&gt;&lt;/b&gt; tabanlıdır.&lt;br/&gt;&lt;br/&gt;
+    Test ve Geribildirim - Galaxy Serileri: &lt;b&gt;TL&lt;/b&gt; &lt;br/&gt;&lt;br/&gt;
+    Test ve Geribildirim - Moto X Serileri: &lt;b&gt;Virgil Shepard&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+    İkon Tasarım ve Market Grafikleri: &lt;b&gt;&lt;a href='https://plus.google.com/+ChristophLaier/auto'&gt;Christoph Laier&lt;/a&gt;&lt;b/&gt;
+    "</string>
+    <!--END-->
+    <string name="app_name">"Aperture"</string>
+
+    <string name="navigation_drawer_open">"Navigasyon çekmecesini aç"</string>
+    <string name="navigation_drawer_close">"Navigasyon çekmecesini kapat"</string>
+
+    <string name="overview">"Genel Bakış"</string>
+    <string name="no_photosorvideos">"Burada hiçbir şey yok :/"</string>
+    <string name="no_photos">"Burada hiç fotoğraf yok :/"</string>
+    <string name="no_videos">"Burada hiç video yok :/"</string>
+    <string name="sort">"Sıralama"</string>
+    <string name="set_as">"Ayarla"</string>
+    <string name="print">"Yazdır"</string>
+    <string name="details">"Detaylar"</string>
+    <string name="share">"Paylaş"</string>
+    <string name="edit">"Düzenle"</string>
+    <string name="delete">"Sil"</string>
+    <string name="delete_confirm_photo">"Bu fotoğrafı silmek istediğinizden emin misiniz?"</string>
+    <string name="delete_confirm_video">"Bu videoyu silmek istediğinizden emin misiniz?"</string>
+    <string name="yes">"Evet"</string>
+    <string name="no">"Hayır"</string>
+
+    <string name="about">"Hakkında"</string>
+    <string name="about_body">"&lt;![CDATA[
+        &lt;b&gt;Aperture&lt;/b&gt;, &lt;b&gt;Marlon Jones&lt;/b&gt; tarafından geliştirilen bir materyal tasarım galeri uygulamasıdır.&lt;br/&gt;
+      &lt;b&gt; &lt;a href='https://play.google.com/store/apps/dev?id=8037142226626699695'&gt;Google Play&lt;/a&gt;  
+        &lt;a href='https://plus.google.com/+MarlonJones'&gt;Google+&lt;/a&gt;  
+        &lt;a href='https://github.com/VirusThePanda'&gt;GitHub&lt;/a&gt;  
+        &lt;a href='https://github.com/VirusThePanda/Aperture-Beta'&gt;Kaynak Kodu&lt;/a&gt;&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;/b&gt;
+Herhangi bir hata bulursanız lütfen e-posta gönderin &lt;b&gt;marlonjones234@gmail.com&lt;/b&gt;, veya &lt;b&gt; &lt;a href='https://plus.google.com/u/0/communities/116518857170051710391'&gt;Topluluğumuza katılın&lt;/a&gt; :)
+    "</string>
+    <string name="dismiss">"Kapat"</string>
+
+    <string name="details_contents">"&lt;![CDATA[
+        &lt;b&gt;Tarih:&lt;/b&gt;  %1$s&lt;br/&gt;
+        &lt;b&gt;Çözünürlük:&lt;/b&gt;  %2$s&lt;br/&gt;
+        &lt;b&gt;Dosya adı:&lt;/b&gt;  %3$s&lt;br/&gt;
+        &lt;b&gt;Dosya boyutu:&lt;/b&gt;  %4$s&lt;br/&gt;
+        &lt;b&gt;Dosya yolu:&lt;/b&gt;  %5$s
+    "</string>
+    <string name="deleting">"Siliniyor…"</string>
+    <string name="selectAll">"Hepsini Seç"</string>
+    <string name="delete_bulk_confirm">"Seçili öğeleri silmek istediğinizden emin misiniz?"</string>
+    <string name="include_folder">"Bir klasör dahil et…"</string>
+    <string name="pick_something">"Bir şey seç..."</string>
+    <string name="choose">"Seç"</string>
+    <string name="filter">"Filtre"</string>
+    <string name="videos">"Videolar"</string>
+    <string name="photos">"Resimler"</string>
+    <string name="all">"Hepsi"</string>
+    <string name="confirm_folder_remove">"&lt;![CDATA[
+        &lt;b&gt;%1$s&lt;/b&gt; klasörünü dahili klasörlerden çıkarmak istiyor musunuz?
+    "</string>
+    <string name="confirm_exclude_album">"&lt;![CDATA[
+        &lt;b&gt;%1$s&lt;/b&gt; klasörünü hariç tutmak istiyor musunuz?
+    "</string>
+    <string name="confirm_exclude_album_remove">"&lt;![CDATA[
+        &lt;b&gt;%1$s&lt;/b&gt; klasörünü hariç tutulan klasörlerinizden çıkarmak istiyor musunuz?
+    "</string>
+    <string name="camtitle">"Fotoğraf, veya video çek?"</string>
+    <string-array name="camitems">
+        <item name="cam1">"Fotoğraf"</item>
+        <item name="cam2">"Video"</item>
+    </string-array>
+    <string name="filtering_photos">"Filtre: Fotoğraflar"</string>
+    <string name="filtering_videos">"Filtre: Videolar"</string>
+    <string name="explorer_mode">"Dosya Yöneticisi Modu"</string>
+    <string name="local">"Aperture"</string>
+    <string name="google_drive">"Google Drive"</string>
+    <string name="dropbox">"Dropbox"</string>
+    <string name="add_account">"Bir hesap ekle..."</string>
+    <string name="accounts">"Hesaplar"</string>
+    <string name="view_mode">"Görünüm Modu"</string>
+    <string name="folder">"Klasör"</string>
+    <string name="error">"Hata"</string>
+    <string name="no_app_complete_action">"Bu eylemi tamamlayamıyoruz. Tamamlamak için ilgili uygulama bulunamadı :("</string>
+
+    <string name="impression_editor">"Aperture Editörü (Önizleme)"</string>
+
+    <string name="save">"Kaydet"</string>
+    <string name="autofix">"Oto. düzeltme"</string>
+    <string name="crop">"Kes"</string>
+    <string name="flip">"Çevir"</string>
+    <string name="filters">"Filtreler"</string>
+    <string name="rotate_left">"Sola Döndür"</string>
+    <string name="rotate_right">"Sağa Döndür"</string>
+    <string name="flip_vertical">"Dikey Çevir"</string>
+    <string name="flip_horizontal">"Yatay Çevir"</string>
+
+    <string name="brightness">"Parlaklık"</string>
+    <string name="contrast">"Kontrast"</string>
+    <string name="crossprocess">"Çapraz İşlem"</string>
+    <string name="documentary">"Belgesel"</string>
+    <string name="duotone">"Çift Ton"</string>
+    <string name="filllight">"Işık Hüzmesi"</string>
+    <string name="fisheye">"Balık Göz"</string>
+    <string name="grain">"Tahıl"</string>
+    <string name="grayscale">"Siyah &amp; Beyaz"</string>
+    <string name="lomoish">"Lomoish"</string>
+    <string name="negative">"Negatif"</string>
+    <string name="posterize">"Posterize"</string>
+    <string name="rotate">"Döndür"</string>
+    <string name="saturate">"Doyur"</string>
+    <string name="sepia">"Sepya"</string>
+    <string name="sharpen">"Keskinleştirme"</string>
+    <string name="temperature">"Sıcaklık"</string>
+    <string name="tint">"Hafif Ton"</string>
+
+    <string name="vignette">"Vinyet"</string>
+    <string name="about_dialog_title">"Aperture %1$s"</string>
+    <string name="info">"Bilgi"</string>
+    <string name="about_desc">"Uygulama, ve geliştirici hakkında"</string>
+
+    <string name="overview_display">"Genel Bakışta Tüm Medyalar Modu"</string>
+    <string name="overview_mode_desc">"Albümler yerine tüm medyaları devamlı bir liste halinde görüntüleyin"</string>
+    <string name="settings">"Ayarlar"</string>
+    <string name="name_asc">"Alfabetik"</string>
+    <string name="modified_desc">"Tarihe göre ters"</string>
+    <string name="modified_asc">"Tarihe göre"</string>
+    <string name="name_desc">"Alfabetik ters"</string>
+    <string name="excluded_folders">"Hariç Tutulan Albümler"</string>
+    <string name="excluded_folders_desc">"Uygulamada gösterilmeyen albümleri düzenleyin"</string>
+    <string name="draw">"Çek"</string>
+    <string name="copy_to">"Kopyala..."</string>
+    <string name="move_to">"Taşı..."</string>
+    <string name="dark_mode">"Karanlık Mod"</string>
+    <string name="dark_mode_desc">"Uygulama arka planını karanlık yapın"</string>
+    <string name="no_excluded_folders">"Henüz hariç tutulan herhangi bir klasörünüz yok :/"</string>
+    <string name="add">"Ekle"</string>
+    <string name="go_up">"Yukarı çık..."</string>
+    <string name="copying">"Kopyalanıyor..."</string>
+    <string name="moving">"Taşınıyor..."</string>
+    <string name="include_subfolders">"Alt Klasörleri Dahil Et"</string>
+    <string name="include_subfolders_desc">"Hariç tutulan klasörlerin alt klasörlerini de hariç tut"</string>
+    <string name="include_subfolders_included_desc">"Dahili klasörler içinde alt klasörleri göster"</string>
+    <string name="choose_album">"Bir albüm seçin..."</string>
+    <string name="invalid_file_path_error">"Aperture'ın bu dosyaya erişmek için izni yok veya dosya mevcut değil :("</string>
+    <string name="included_folders">"Dahili Klasörler"</string>
+    <string name="primary_color">"Birincil Renk"</string>
+    <string name="primary_color_desc">"Birincil tema rengini seçin"</string>
+    <string name="accent_color">"Vurgu Rengi"</string>
+    <string name="accent_color_desc">"Vurgu rengini seçin"</string>
+    <string name="theme">"Tema"</string>
+    <string name="remember_for_directory">"Dizin için hatırla"</string>
+    <string name="exclude">"Hariç tut"</string>
+    <string name="exclude_prompt_single">"Seçilen albümü hariç tutmak istiyor musunuz?"</string>
+    <string name="exclude_prompt">"%1$d albümü hariç tutmak istiyor musunuz?"</string>
+    <string name="excluding">"Dışlanıyor..."</string>
+    <string name="open_permission_error">"Aperture'ın talep edilen medya dosyasına erişim izni bulunmamaktadır :("</string>
+    <string name="slideshow">"Slayt gösterisi"</string>
+    <string name="start">"Başlat"</string>
+    <string name="slideshow_loop">"Slayt gösterisi sonsuza kadar sürsün"</string>
+    <string name="slideshow_seeklabel">"Her slayt arası %1$d saniye"</string>
+    <string name="slideshow_seeklabel_single">"Her slayt arası 1 saniye"</string>
+    <string name="colored_navbar">"Renkli Navigasyon Barı"</string>
+    <string name="colored_navbar_desc">"Navigasyon barına birincil tema rengini uygulayın. Bu sadece Android 5.0 ve üzeri sürümler veya desteklenen Custom ROM'lar içindir."</string>
+    <string name="root">"Kök"</string>
+    <string name="internal_storage">"Dahili Depolama"</string>
+
+    <string-array name="account_options">
+        <item>"@string/google_drive"</item>
+        <item>"@string/dropbox"</item>
+    </string-array>
+
+    <string name="grid_size">"Izgara Boyutu"</string>
+    <string name="one_num">"1"</string>
+    <string name="two_num">"2"</string>
+    <string name="three_num">"3"</string>
+    <string name="four_num">"4"</string>
+    <string name="five_num">"5"</string>
+    <string name="six_num">"6"</string>
+
+    <string name="one_photo">"1 fotoğraf"</string>
+    <string name="one_video">"1 video"</string>
+    <string name="one_folder">"1 klasör"</string>
+    <string name="one_album">"1 albüm"</string>
+    <string name="x_photos">"%1$d fotoğraf"</string>
+    <string name="x_videos">"%1$d video"</string>
+    <string name="x_folders">"%1$d klasör"</string>
+    <string name="x_albums">"%1$d albüm"</string>
+
+    <string name="behavior">"Davranış"</string>
+    <string name="toolbar_stats">"Araç Çubuğu Albüm İstatistikleri"</string>
+    <string name="toolbar_stats_desc">"Araç çubuğunda albümün içerisinde kaç tane fotoğraf veya video olduğunu görün"</string>
+    <string name="empty">"boş"</string>
+    <string name="share_using">"... ile paylaş."</string>
+    <string name="permission_needed">"İzin Gerekli"</string>
+    <string name="permission_needed_desc">"Görüntülemek için telefonunuzun depolama alanına erişim izni gerekli! Aperture şimdi kapanacaktır."</string>
+    <string name="back">"Geri"</string>
+
+</resources>

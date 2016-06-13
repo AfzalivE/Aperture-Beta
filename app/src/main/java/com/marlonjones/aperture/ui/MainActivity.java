@@ -1,5 +1,6 @@
 package com.marlonjones.aperture.ui;
 
+import android.Manifest;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -8,14 +9,24 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.SharedElementCallback;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -38,9 +49,11 @@ import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marlonjones.aperture.R;
 import com.marlonjones.aperture.api.AlbumEntry;
@@ -54,12 +67,15 @@ import com.marlonjones.aperture.ui.base.ThemedActivity;
 import com.marlonjones.aperture.utils.Utils;
 import com.marlonjones.aperture.views.BreadCrumbLayout;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.ThemeSingleton;
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.afollestad.materialdialogs.internal.MDTintHelper;
-import com.melnykov.fab.FloatingActionButton;
+
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -68,16 +84,16 @@ import java.util.Map;
  */
 public class MainActivity extends ThemedActivity
         implements FolderSelectorDialog.FolderCallback {
-
+    private String mCameraFileName;
     public DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     public boolean mPickMode;
     private SelectAlbumMode mSelectAlbumMode = SelectAlbumMode.NONE;
     public MediaCab mMediaCab;
     public Toolbar mToolbar;
-    public FloatingActionButton mFab;
     public BreadCrumbLayout mCrumbs;
-
+    private static final int NEW_PICTURE = 1;
+    private Uri imgUri;
     private CharSequence mTitle;
     public boolean drawerArrowOpen;
     private final static int SETTINGS_REQUEST = 9000;
@@ -99,6 +115,7 @@ public class MainActivity extends ThemedActivity
     public Bundle mTmpState;
     public boolean mIsReentering;
 
+
     public void animateDrawerArrow(boolean closed) {
         if (mDrawerToggle == null || drawerArrowOpen == !closed) return;
         ValueAnimator anim;
@@ -119,24 +136,11 @@ public class MainActivity extends ThemedActivity
         anim.setDuration(300);
         anim.start();
     }
-    public void camFab(View view) {
-        new MaterialDialog.Builder(this)
-                .title(R.string.camtitle)
-                .items(R.array.camitems)
-                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                        /**
-                         * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
-                         * returning false here won't allow the newly selected radio button to actually be selected.
-                         **/
 
-                        return true;
-                    }
-                })
-                .positiveText(R.string.choose)
-                .show();
+    public void fab(View view) {
+
     }
+
     public void setStatus(String status) {
         TextView view = (TextView) findViewById(com.marlonjones.aperture.R.id.status);
         if (status == null) {
@@ -279,20 +283,15 @@ public class MainActivity extends ThemedActivity
         super.onCreate(savedInstanceState);
         setContentView(com.marlonjones.aperture.R.layout.activity_main);
         setupSharedElementCallback();
-        //mFab = (FloatingActionButton) findViewById(com.marlonjones.aperture.R.id.camFab);
-        //findViewById(com.marlonjones.aperture.R.id.camFab).setBackgroundColor(accentColor());
         mToolbar = (Toolbar) findViewById(com.marlonjones.aperture.R.id.toolbar);
         mToolbar.setSubtitleTextAppearance(this, com.marlonjones.aperture.R.style.ToolbarSubtitleStyle);
         setSupportActionBar(mToolbar);
         findViewById(com.marlonjones.aperture.R.id.toolbar_frame).setBackgroundColor(primaryColor());
-
         processIntent(getIntent());
-
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
         if (!isSelectAlbumMode()) {
             mDrawerLayout = (DrawerLayout) findViewById(com.marlonjones.aperture.R.id.drawer_layout);
             mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -306,12 +305,12 @@ public class MainActivity extends ThemedActivity
                     if (drawerView == null) super.onDrawerSlide(mDrawerLayout, slideOffset);
                 }
 
-                @Override
-                public void onDrawerClosed(View drawerView) {
-                    Fragment nav = getFragmentManager().findFragmentByTag("NAV_DRAWER");
-                    if (nav != null)
-                        ((NavDrawerFragment) nav).notifyClosed();
-                }
+                //  @Override
+                // public void onDrawerClosed(View drawerView) {
+                //     Fragment nav = getFragmentManager().findFragmentByTag("NAV_DRAWER");
+                //    if (nav != null)
+                //        ((NavDrawerFragment) nav).notifyClosed();
+                //}
             };
             mDrawerLayout.setDrawerShadow(com.marlonjones.aperture.R.drawable.drawer_shadow, GravityCompat.START);
             mDrawerLayout.post(new Runnable() {
@@ -470,12 +469,6 @@ public class MainActivity extends ThemedActivity
                 default:
                     setSelectAlbumMode(SelectAlbumMode.CHOOSE);
                     break;
-                case com.marlonjones.aperture.R.id.copyTo:
-                    setSelectAlbumMode(SelectAlbumMode.COPY);
-                    break;
-                case com.marlonjones.aperture.R.id.moveTo:
-                    setSelectAlbumMode(SelectAlbumMode.MOVE);
-                    break;
             }
         }
     }
@@ -567,6 +560,7 @@ public class MainActivity extends ThemedActivity
         if (item.getItemId() == com.marlonjones.aperture.R.id.settings) {
             startActivityForResult(new Intent(this, SettingsActivity.class), SETTINGS_REQUEST);
             return true;
+
         } else if (item.getItemId() == android.R.id.home) {
             if (drawerArrowOpen) {
                 onBackPressed();
@@ -588,7 +582,33 @@ public class MainActivity extends ThemedActivity
             if (content != null) content.reload();
             reloadNavDrawerAlbums();
         }
+        if (requestCode == NEW_PICTURE) {
+            if (resultCode == Activity.RESULT_OK) {
+
+                Uri uri = null;
+                if (data != null) {
+                    uri = data.getData();
+                }
+                if (uri == null && mCameraFileName != null) {
+                    uri = Uri.fromFile(new File(mCameraFileName));
+                }
+                Date date = new Date();
+                DateFormat df = new SimpleDateFormat("-mm-ss");
+                String newPicFile = "PH" + df.format(date) + ".jpg";
+                File picFile=new File(new File(Environment.getExternalStorageDirectory(), "Aperture"), newPicFile);
+                MediaScannerConnection.scanFile(this,
+                        new String[]{picFile.getAbsolutePath()}, null,
+                        new MediaScannerConnection.OnScanCompletedListener() {
+                            @Override
+                            public void onScanCompleted(String path, Uri uri) {
+                                Log.i("ExternalStorage", "Scanned " + path + ":");
+                                Log.i("ExternalStorage", "-> uri=" + uri);
+                            }
+                        });
+            }
+        }
     }
+
 
     private void switchPage(String path, boolean closeDrawer) {
         switchPage(path, closeDrawer, false);
@@ -732,4 +752,47 @@ public class MainActivity extends ThemedActivity
             });
         }
     }
-}
+
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+
+    public void camera(MenuItem menu) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasCameraPermission = checkSelfPermission(Manifest.permission.CAMERA);
+            if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+                return;
+            }
+            Intent intent = new Intent();
+            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+            Date date = new Date();
+            DateFormat df = new SimpleDateFormat("-mm-ss");
+
+            String newPicFile = "PH" + df.format(date) + ".jpg";
+            String outPath = "/sdcard/Aperture/" + newPicFile;
+            File outFile = new File(outPath);
+            mCameraFileName = outFile.toString();
+            Uri outuri = Uri.fromFile(outFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, outuri);
+            startActivityForResult(intent, NEW_PICTURE);
+        }
+         else {
+            Intent intent = new Intent();
+            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+            Date date = new Date();
+            DateFormat df = new SimpleDateFormat("-mm-ss");
+
+            String newPicFile = "PH" + df.format(date) + ".jpg";
+            String outPath = "/sdcard/Aperture/" + newPicFile;
+            File outFile = new File(outPath);
+            mCameraFileName = outFile.toString();
+            Uri outuri = Uri.fromFile(outFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, outuri);
+            startActivityForResult(intent, NEW_PICTURE);
+        }
+    }}
+
+
+
+

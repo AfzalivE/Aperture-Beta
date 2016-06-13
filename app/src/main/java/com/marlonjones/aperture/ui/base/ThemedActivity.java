@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.marlonjones.aperture.R;
 import com.marlonjones.aperture.views.CircleView;
-import com.afollestad.materialdialogs.ThemeSingleton;
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 /**
  * @author Aidan Follestad (afollestad), edited for Aperture by Marlon Jones (VirusThePanda)
@@ -42,7 +42,7 @@ public abstract class ThemedActivity extends AppCompatActivity {
         if (mLastDarkTheme) key += "_dark";
         else key += "_light";
         final int defaultColor = ContextCompat.getColor(this, mLastDarkTheme ?
-                com.marlonjones.aperture.R.color.dark_theme_gray : R.color.material_red_A700);
+                com.marlonjones.aperture.R.color.dark_theme_gray : R.color.default_main);
         return PreferenceManager.getDefaultSharedPreferences(this).getInt(key, defaultColor);
     }
 
@@ -61,7 +61,7 @@ public abstract class ThemedActivity extends AppCompatActivity {
         String key = "accent_color";
         if (mLastDarkTheme) key += "_dark";
         else key += "_light";
-        final int defaultColor = ContextCompat.getColor(this, R.color.material_red_A400);
+        final int defaultColor = ContextCompat.getColor(this, R.color.default_accent);
         return PreferenceManager.getDefaultSharedPreferences(this).getInt(key, defaultColor);
     }
 
@@ -85,7 +85,7 @@ public abstract class ThemedActivity extends AppCompatActivity {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(key, newColor).commit();
     }
     public boolean isColoredNavBar() {
-        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("colored_navbar", true);
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("colored_navbar", false);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
